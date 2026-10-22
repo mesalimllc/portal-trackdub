@@ -81,9 +81,7 @@ export function JobsListPage() {
     {
       key: "projectName",
       header: "Project",
-      render: (job) => (
-        <span className="font-medium text-gray-900">{job.projectName}</span>
-      ),
+      render: (job) => <span className="font-medium text-gray-900">{job.projectName}</span>,
     },
     {
       key: "status",
@@ -127,7 +125,9 @@ export function JobsListPage() {
   if (isLoading) {
     return (
       <div className="space-y-6">
-        <h1 className="text-lg font-semibold tracking-tight" style={{ color: "#1c1c1a" }}>Jobs</h1>
+        <h1 className="text-lg font-semibold tracking-tight" style={{ color: "#1c1c1a" }}>
+          Jobs
+        </h1>
         <LoadingSpinner message="Loading jobs…" />
       </div>
     );
@@ -136,11 +136,10 @@ export function JobsListPage() {
   if (isError) {
     return (
       <div className="space-y-6">
-        <h1 className="text-lg font-semibold tracking-tight" style={{ color: "#1c1c1a" }}>Jobs</h1>
-        <ErrorState
-          message="Failed to load jobs. Please try again."
-          onRetry={() => refetch()}
-        />
+        <h1 className="text-lg font-semibold tracking-tight" style={{ color: "#1c1c1a" }}>
+          Jobs
+        </h1>
+        <ErrorState message="Failed to load jobs. Please try again." onRetry={() => refetch()} />
       </div>
     );
   }
@@ -148,12 +147,18 @@ export function JobsListPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-lg font-semibold tracking-tight" style={{ color: "#1c1c1a" }}>Jobs</h1>
+        <h1 className="text-lg font-semibold tracking-tight" style={{ color: "#1c1c1a" }}>
+          Jobs
+        </h1>
       </div>
 
       {/* Filters */}
       <div className="flex items-center gap-3">
-        <label htmlFor="status-filter" className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: "#8a8a82" }}>
+        <label
+          htmlFor="status-filter"
+          className="text-[10px] font-semibold uppercase tracking-widest"
+          style={{ color: "#8a8a82" }}
+        >
           Status
         </label>
         <select
@@ -176,7 +181,10 @@ export function JobsListPage() {
       </div>
 
       {/* Table with clickable rows */}
-      <div className="overflow-x-auto" style={{ border: "1px solid #e0dbd2", borderTop: "2px solid #c0b8ac" }}>
+      <div
+        className="overflow-x-auto"
+        style={{ border: "1px solid #e0dbd2", borderTop: "2px solid #c0b8ac" }}
+      >
         <table
           className="min-w-full bg-white"
           style={{ borderCollapse: "collapse" }}
@@ -217,8 +225,12 @@ export function JobsListPage() {
                   role="link"
                   tabIndex={0}
                   aria-label={`View job: ${job.projectName}`}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = "#f9f7f3"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = ""; }}
+                  onMouseEnter={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = "#f9f7f3";
+                  }}
+                  onMouseLeave={(e) => {
+                    (e.currentTarget as HTMLElement).style.background = "";
+                  }}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
                       e.preventDefault();
