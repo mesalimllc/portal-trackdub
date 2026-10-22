@@ -1,7 +1,7 @@
 # Review Guide
 
 Use this file when reviewing pull requests in the Trackdub portal SPA
-(`trackdubllc/portal.trackdub`).
+(`mesalimllc/portal.trackdub`).
 
 This is a reviewer checklist, not an authoring guide. For architecture and
 Worker requirements, see `README.md`. For agent Linear sync, see `AGENTS.md`.

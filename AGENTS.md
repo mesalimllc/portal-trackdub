@@ -11,7 +11,7 @@
 
 ## Cursor Cloud specific instructions
 
-TanStack Start / Vite / Bun portal (GitHub repo `trackdubllc/trackdub-api-hub`). Local: `bun install`, then `bun run dev` or `bun run build`.
+TanStack Start / Vite / Bun portal (GitHub repo `mesalimllc/trackdub-api-hub`). Local: `bun install`, then `bun run dev` or `bun run build`.
 
 - Install with Bun (`bun.lock` is canonical; `package-lock.json` may also exist, prefer Bun).
 - Auth and API calls need live/staging backend secrets when testing logged-in flows. Prefer Cursor Secrets over committed env files.
