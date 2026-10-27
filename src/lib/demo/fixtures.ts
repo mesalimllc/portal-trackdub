@@ -417,7 +417,7 @@ export function handleDemoRequest(
   }
 
   // ── Jobs ────────────────────────────────────────────────────────────────
-  if (path === "/api/dubs") {
+  if (path === "/api/dubs" && method === "GET") {
     const status = parsed.searchParams.get("status");
     const items = status ? store.jobs.filter((job) => job.status === status) : store.jobs;
     return json({ items, totalCount: items.length });
@@ -437,9 +437,6 @@ export function handleDemoRequest(
       return new Response(null, { status: 204 });
     }
     return json(job);
-  }
-  if (path === "/api/dubs" || path === "/api/dubs/") {
-    // handled above
   }
   if (method === "POST" && path.startsWith("/api/dubs")) {
     const input = body();
