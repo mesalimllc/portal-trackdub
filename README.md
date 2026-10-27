@@ -23,6 +23,21 @@ portal.trackdub.com          api.trackdub.com
 | `VITE_API_BASE_URL` | `https://api.trackdub.com`     | Origin of the Trackdub Worker. **Public build variable — not secret.** Compiled into the browser bundle. |
 | `VITE_APP_ENV`      | `production`                   | Optional — used for banners/logging.                                  |
 
+## Demo mode (preview only)
+
+When `api.trackdub.com` is unreachable you can still browse the portal UI.
+Demo mode fabricates a session and answers every Worker request from an
+in-memory fixture store (`src/lib/demo/`).
+
+Turn it on from the sign-in page ("Browse with demo data"), or with `?demo=1`
+in the URL. Turn it off with "Turn off demo" or `?demo=0`.
+
+- Only available on `localhost` / `*.lovable.app` preview hosts, or when the
+  build sets `VITE_DEMO_MODE=1`.
+- Never active on `portal.trackdub.com` — the Worker remains the only real
+  authorization boundary.
+- All data shown is sample data; nothing is sent to the backend.
+
 ## Worker requirements (external, not in this repo)
 
 - `Access-Control-Allow-Origin: https://portal.trackdub.com` (exact origin, never `*`).
