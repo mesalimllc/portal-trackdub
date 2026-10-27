@@ -345,9 +345,6 @@ export function createDemoStore(): DemoStore {
       }
     }
   }, 4000);
-  if (typeof timer !== "undefined" && "unref" in timer) {
-    (timer as unknown as { unref?: () => void }).unref?.();
-  }
 
   return store;
 }
