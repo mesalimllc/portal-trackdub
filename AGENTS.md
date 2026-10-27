@@ -16,3 +16,4 @@ TanStack Start / Vite / Bun portal (GitHub repo `mesalimllc/trackdub-api-hub`). 
 - Install with Bun (`bun.lock` is canonical; `package-lock.json` may also exist, prefer Bun).
 - Auth and API calls need live/staging backend secrets when testing logged-in flows. Prefer Cursor Secrets over committed env files.
 - Agent verification default: `bun run build`. Skip deploy unless asked.
+- Demo mode (`src/lib/demo/`) is a preview convenience only: it may activate on localhost/`*.lovable.app` hosts or when `VITE_DEMO_MODE=1` is set at build time, and never on the production portal origin — the Worker stays the only real authorization boundary.
