@@ -3,6 +3,7 @@ import { useRouter } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { Sidebar } from "./Sidebar";
 import { authService, invalidateSession, useAuth } from "@/lib/auth";
+import { disableDemoMode, isDemoMode } from "@/lib/demo/demo-mode";
 
 export function AppLayout() {
   const { user, setLocalSession, status, error, refresh } = useAuth();
@@ -64,6 +65,18 @@ export function AppLayout() {
               Session service unavailable. {error?.message ?? "Retry before continuing."}
               <button className="ml-2 underline" onClick={() => void refresh()}>
                 Retry
+              </button>
+            </div>
+          )}
+          {isDemoMode() && (
+            <div
+              role="status"
+              className="mb-4 rounded-md border border-sky-300 bg-sky-50 p-3 text-sm text-sky-900"
+            >
+              You're viewing demo data — the sign-in service is bypassed and every job,
+              invoice and key below is a sample.
+              <button className="ml-2 underline" onClick={() => disableDemoMode()}>
+                Turn off demo
               </button>
             </div>
           )}
