@@ -3,6 +3,7 @@ import { useState, type FormEvent } from "react";
 import { z } from "zod";
 
 import { authService, useAuth } from "../lib/auth";
+import { demoAllowed, disableDemoMode, enableDemoMode, isDemoMode } from "../lib/demo/demo-mode";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
 import { Label } from "../components/ui/label";
@@ -127,6 +128,22 @@ function LoginPage() {
                 {sessionError?.message ?? "Session service unavailable."}{" "}
                 <button type="button" className="underline" onClick={() => void refresh()}>
                   Retry
+                </button>
+              </p>
+            )}
+            {demoAllowed() && !isDemoMode() && (
+              <p className="text-xs text-muted-foreground">
+                The sign-in service is unreachable right now.{" "}
+                <button type="button" className="underline" onClick={() => enableDemoMode()}>
+                  Browse with demo data
+                </button>
+              </p>
+            )}
+            {isDemoMode() && (
+              <p className="text-xs text-muted-foreground">
+                Demo data is on.{" "}
+                <button type="button" className="underline" onClick={() => disableDemoMode()}>
+                  Turn it off
                 </button>
               </p>
             )}

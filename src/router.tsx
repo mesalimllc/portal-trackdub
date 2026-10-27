@@ -2,6 +2,10 @@ import { QueryClient } from "@tanstack/react-query";
 import { createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import { ensureSession, invalidateSession } from "./lib/auth/ensure-session";
+import { installDemoFetch } from "./lib/demo/demo-mode";
+
+// Preview-only demo mode must patch fetch before any route guard runs.
+installDemoFetch();
 
 /**
  * Router context exposed to `beforeLoad` and components.

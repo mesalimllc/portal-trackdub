@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { API_BASE_URL } from "@/lib/config";
 import { notifyUnauthorized } from "@/lib/auth/ensure-session";
+import { demoUpload, isDemoMode } from "@/lib/demo/demo-mode";
 
 const errorEnvelopeSchema = z.object({
   error: z.object({
@@ -115,6 +116,7 @@ export async function apiUpload(
   signal?: AbortSignal,
 ) {
   if (signal?.aborted) throw new DOMException("Upload aborted", "AbortError");
+  if (isDemoMode()) return demoUpload(file, onProgress, signal);
   const form = new FormData();
   form.append("file", file);
   return new Promise<z.infer<typeof uploadResponseSchema>>((resolve, reject) => {
